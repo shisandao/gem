@@ -1,0 +1,33 @@
+server:
+  port: 8066
+
+# mybatis配置
+mybatis:
+  #mapper文件路径
+  mapperLocations: classpath:com/ssd/gem/**/mappers/*.xml
+  #typeAlias包路径
+  type-alias-package:
+
+# 指定执行环境
+spring:
+  profiles:
+    active: @package.environment@
+
+
+---
+########## local环境配置 ##########
+spring:
+  profiles: local
+  # 数据源
+  datasource:
+    url: jdbc:mysql://localhost:3306/gem?serverTimezone=UTC&useSSL=false
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+devtools:
+  livereload:
+    enabled: true #是否支持livereload
+    port: 35729
+  restart:
+    enabled: true #是否支持热部署
